@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(TaskManagerApp());
@@ -14,10 +13,10 @@ class TaskManagerApp extends StatelessWidget {
         primarySwatch: Colors.brown,
         scaffoldBackgroundColor: Color(0xFFF5F5DC), // Cream color
         textTheme: TextTheme(
-          bodyLarge: GoogleFonts.dancingScript(
-              fontSize: 18.0, color: Colors.brown[800]),
-          bodyMedium: GoogleFonts.dancingScript(
-              fontSize: 16.0, color: Colors.brown[700]),
+          bodyLarge: TextStyle(
+              fontSize: 18.0, color: Colors.brown[800], fontFamily: 'Roboto'),
+          bodyMedium: TextStyle(
+              fontSize: 16.0, color: Colors.brown[700], fontFamily: 'Roboto'),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -72,8 +71,10 @@ class _TaskListScreenState extends State<TaskListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My To-Do List',
-            style: GoogleFonts.dancingScript(fontSize: 28.0)),
+        title: Text(
+          'My To-Do List',
+          style: TextStyle(fontSize: 28.0, fontFamily: 'Roboto'),
+        ),
         backgroundColor: Colors.brown[400] ?? Colors.brown,
       ),
       body: Padding(
@@ -87,8 +88,8 @@ class _TaskListScreenState extends State<TaskListScreen> {
                     controller: _taskController,
                     decoration: InputDecoration(
                       labelText: 'Enter Task',
-                      labelStyle:
-                          GoogleFonts.dancingScript(color: Colors.brown[700]),
+                      labelStyle: TextStyle(
+                          color: Colors.brown[700], fontFamily: 'Roboto'),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                             color: Colors.brown[400] ?? Colors.brown),
@@ -107,7 +108,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                 SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: _addTask,
-                  child: Text('Add', style: GoogleFonts.dancingScript()),
+                  child: Text('Add', style: TextStyle(fontFamily: 'Roboto')),
                 ),
               ],
             ),
@@ -133,15 +134,18 @@ class _TaskListScreenState extends State<TaskListScreen> {
                       ),
                       title: Text(
                         task.name,
-                        style: GoogleFonts.dancingScript(
+                        style: TextStyle(
                           decoration: task.isCompleted
                               ? TextDecoration.lineThrough
                               : TextDecoration.none,
+                          fontFamily: 'Roboto',
                         ),
                       ),
                       trailing: IconButton(
-                        icon: Icon(Icons.delete,
-                            color: Colors.brown[600]), // Brown trash can icon
+                        icon: Icon(
+                          Icons.delete,
+                          color: Colors.brown[600], // Brown trash can icon
+                        ),
                         onPressed: () => _deleteTask(index),
                       ),
                     ),
